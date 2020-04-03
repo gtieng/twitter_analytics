@@ -27,3 +27,26 @@ import matplotlib.pyplot as plt
 import re
 from wordcloud import WordCloud, STOPWORDS
 ```
+
+## Data Cleaning and Transformations
+Native data from Twitter Analytics is fairly clean, but we'll still need to perform a few transformations of the data to get the answers we want from it. 
+
+### Adding Time Columns
+Using the `datetime` library is great for parsing months, days, and days of the week from the `time` columns. We'll be adding these classifications to their own columns for further aggregate plotting further in the project.
+
+```
+gerard["time"] = pd.to_datetime(gerard["time"])
+gerard["hour"] = gerard["time"].dt.hour
+gerard["month"] = gerard["time"].dt.month
+gerard["dayofweek"] = gerard["time"].dt.dayofweek
+```
+
+### Separating Organic Tweets from Replies
+When it comes to measurement, separating the organic tweets from replies is necessary to compare your apples against apples. Organic tweets are more often than not a one-to-many conversation--usually leading to higher engagement totals--while replies are typically a one-to-one type of dialogue.
+
+As all replies begin with "@", using Python's `string.startswith()` method is a very easy way to filter those tweets from the rest. Use of the `~` symbol is just as easy to perform the opposite.
+
+```
+gerard_tweets = gerard[~gerard["Tweet text"].str.startswith("@")]
+gerard_replies = gerard[gerard["Tweet text"].str.startswith("@")]
+```
