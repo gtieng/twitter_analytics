@@ -80,7 +80,7 @@ plt.show()
 ```
 ![](https://github.com/gtieng/twitter_analytics/blob/master/readme_images/activity_plot.png)
 
-> Highest periods of activity for user @gerardtieng are in the evenings into early morning. More tweet activity was recorded in the summer months compared to other seasons.
+> *Highest periods of activity for user @gerardtieng are in the evenings into early morning. More tweet activity was recorded in the summer months compared to other seasons.*
 
 ## Measuring Follower Engagements
 In measuring follower engagements, we'll examine performance based on the same windows of month, day and year. This time, we'll change the aggregate method to `DataFrame.groupby().sum()` to measure the totals at each period interval. Plotting each metric is similar to code above. Here's a demonstration of types of engagement by the hour.
@@ -104,7 +104,7 @@ ax[1,1].set_title("replies by hour")
 ```
 ![](https://github.com/gtieng/twitter_analytics/blob/master/readme_images/engagement_plot.png)
 
-> Engagements such as likes and retweets are concentrated in the 18:00 hour block where activity is also highest for the user. Meanwhile, tweets made in the 14:00 hour block are seen to receive more impressions. It is recommended that this user tweet more during 14:00 to boost potential engagements.
+> *Engagements such as likes and retweets are concentrated in the 18:00 hour block where activity is also highest for the user. Meanwhile, tweets made in the 14:00 hour block are seen to receive more impressions. It is recommended that this user tweet more during 14:00 to boost potential engagements.*
 
 
 
@@ -161,10 +161,11 @@ plt.tight_layout(pad = 0)
 ```
 ![](https://github.com/gtieng/twitter_analytics/blob/master/readme_images/wordcloud_plot.png)
 
-> Recommendations for content are to direct more conversations to get the attention of @brandwatch, which gave a big boost to impressions upon its interaction with the user's content.
+> *Recommendations for content are to direct more conversations to get the attention of @brandwatch, which gave a big boost to impressions upon its interaction with the user's content.*
 
 ## Authors
-**Gerard Tieng** - Data Analyst and Social Media Marketer
+**Gerard Tieng**
+*Data Analyst and Social Media Marketer*
 
 [http://www.twitter.com/gerardtieng](http://www.linkedin.com/in/gerardtieng) \
 [http://www.linkedin.com/in/gerardtieng](http://www.linkedin.com/in/gerardtieng)
