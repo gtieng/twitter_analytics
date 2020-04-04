@@ -4,7 +4,6 @@
 Today, we'll be using Python to chart Twitter performance metrics based on the standard set of data provided by Twitter Analytics. By the end of this project, we will be able to vizualize or list the following pieces of information:
 
 - Most active windows on Twitter.
-- Most mentioned accounts and hashtags.
 - Twitter engagement totals and averages per tweet
 - Optimal time windows for the best engagement performance.
 - Themes of the user's most popular content.
@@ -81,6 +80,8 @@ plt.show()
 ```
 ![](https://github.com/gtieng/twitter_analytics/blob/master/readme_images/activity_plot.png)
 
+> Highest periods of activity for user @gerardtieng are in the evenings into early morning. More tweet activity was recorded in the summer months compared to other seasons.
+
 ## Measuring Follower Engagements
 In measuring follower engagements, we'll examine performance based on the same windows of month, day and year. This time, we'll change the aggregate method to `DataFrame.groupby().sum()` to measure the totals at each period interval. Plotting each metric is similar to code above. Here's a demonstration of types of engagement by the hour.
 
@@ -102,6 +103,10 @@ ax[1,1].bar(hour_engagement.index, hour_engagement["replies"], tick_label=hour_e
 ax[1,1].set_title("replies by hour")
 ```
 ![](https://github.com/gtieng/twitter_analytics/blob/master/readme_images/engagement_plot.png)
+
+> Engagements such as likes and retweets are concentrated in the 18:00 hour block where activity is also highest for the user. Meanwhile, tweets made in the 14:00 hour block are seen to receive more impressions. It is recommended that this user tweet more during 14:00 to boost potential engagements.
+
+
 
 ## Content Analysis
 For the last section of this project, we'll get to dive into the content of the tweets themselves to see trends in popular keyword topics by visualizing them in word clouds.
@@ -155,5 +160,15 @@ plt.axis("off")
 plt.tight_layout(pad = 0)
 ```
 ![](https://github.com/gtieng/twitter_analytics/blob/master/readme_images/wordcloud_plot.png)
+
+> Recommendations for content are to direct more conversations to get the attention of @brandwatch, which gave a big boost to impressions upon its interaction with the user's content.
+
+## Authors
+**Gerard Tieng** - Data Analyst and Social Media Marketer
+
+http://www.twitter.com/gerardtieng\
+http://www.linkedin.com/in/gerardtieng
+
+
 
 
