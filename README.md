@@ -29,7 +29,7 @@ from wordcloud import WordCloud, STOPWORDS
 ```
 
 ## Data Cleaning and Transformations
-Native data from Twitter Analytics is fairly clean, but we'll still need to perform a few transformations of the data to get the answers we want from it. 
+Native data from Twitter Analytics is fairly clean, but we'll still need to perform a few transformations of the data to get the answers we want from it. Below are explanations as to how to add custom sorting columns plus a simple sorting method to separate organic tweets from replies.
 
 ### Adding Time Columns
 Using the `datetime` library is great for parsing months, days, and days of the week from the `time` columns. We'll be adding these classifications to their own columns for further aggregate plotting further in the project.
@@ -50,3 +50,33 @@ As all replies begin with "@", using Python's `string.startswith()` method is a 
 gerard_tweets = gerard[~gerard["Tweet text"].str.startswith("@")]
 gerard_replies = gerard[gerard["Tweet text"].str.startswith("@")]
 ```
+
+## Plotting User Activity
+Before measuring engagement, it is important to understand the patterns of user activity. As Twitter conversations move relatively in real-time (as compared to other popular social media platforms), the times in which the majority of engagement will likely be gathered in the first few moments any content is posted. Engagement patterns are highly affected by user activity.
+
+With the following code, we'll form three custom dataframes based on aggregated month, day, and hour totals and plot them to visualize this user's most popular windows of activity.
+
+```
+month_activity = gerard_tweets.groupby("month").count()
+day_activity = gerard_tweets.groupby("dayofweek").count()
+hour_activity = gerard_tweets.groupby("hour").count()
+
+
+fig, ax = plt.subplots(3, 1, figsize=(15, 18))
+
+ax[0].bar(month_activity.index, month_activity["Tweet permalink"], tick_label=month_activity.index)
+ax[0].set_xlabel("month")
+ax[0].set_ylabel("tweet activity")
+
+ax[1].bar(day_activity.index, day_activity["Tweet permalink"], tick_label=day_activity.index)
+ax[1].set_xlabel("day")
+ax[1].set_ylabel("tweet activity")
+
+ax[2].bar(hour_activity.index, hour_activity["Tweet permalink"], tick_label=hour_activity.index)
+ax[2].set_xlabel("hour")
+ax[2].set_ylabel("tweet activity")
+
+plt.show()
+```
+~[](https://github.com/gtieng/twitter_analytics/blob/master/readme_images/activity_plot.png)
+
