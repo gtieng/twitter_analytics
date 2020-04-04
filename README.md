@@ -166,9 +166,5 @@ plt.tight_layout(pad = 0)
 ## Authors
 **Gerard Tieng** - Data Analyst and Social Media Marketer
 
-http://www.twitter.com/gerardtieng\
-http://www.linkedin.com/in/gerardtieng
-
-
-
-
+[http://www.twitter.com/gerardtieng](http://www.linkedin.com/in/gerardtieng) \
+[http://www.linkedin.com/in/gerardtieng](http://www.linkedin.com/in/gerardtieng)
