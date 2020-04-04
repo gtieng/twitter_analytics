@@ -164,7 +164,7 @@ plt.tight_layout(pad = 0)
 > *Recommendations for content are to direct more conversations to get the attention of @brandwatch, which gave a big boost to impressions upon its interaction with the user's content.*
 
 ## Authors
-**Gerard Tieng**
+**Gerard Tieng** \
 *Data Analyst and Social Media Marketer*
 
 [http://www.twitter.com/gerardtieng](http://www.linkedin.com/in/gerardtieng) \
