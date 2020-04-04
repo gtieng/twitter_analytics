@@ -97,6 +97,6 @@ ax[1,0].set_title("retweets by hour")
 ax[1,1].bar(hour_engagement.index, hour_engagement["replies"], tick_label=hour_engagement.index, color="orange")
 ax[1,1].set_title("replies by hour")
 ```
-
+![](https://github.com/gtieng/twitter_analytics/blob/master/readme_images/engagement_plot.png)
 
 
