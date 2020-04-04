@@ -88,15 +88,71 @@ In measuring follower engagements, we'll examine performance based on the same w
 hour_engagement = gerard_tweets.groupby("hour").sum()
 
 fig, ax = plt.subplots(2,2, figsize=(15,10))
+
 ax[0,0].bar(hour_engagement.index, hour_engagement["impressions"], tick_label=hour_engagement.index, color="blue")
 ax[0,0].set_title("impressions by hour")
+
 ax[0,1].bar(hour_engagement.index, hour_engagement["likes"], tick_label=hour_engagement.index, color="red")
 ax[0,1].set_title("likes by hour")
+
 ax[1,0].bar(hour_engagement.index, hour_engagement["retweets"], tick_label=hour_engagement.index, color="green")
 ax[1,0].set_title("retweets by hour")
+
 ax[1,1].bar(hour_engagement.index, hour_engagement["replies"], tick_label=hour_engagement.index, color="orange")
 ax[1,1].set_title("replies by hour")
 ```
 ![](https://github.com/gtieng/twitter_analytics/blob/master/readme_images/engagement_plot.png)
+
+## Content Analysis
+For the last section of this project, we'll get to dive into the content of the tweets themselves to see trends in popular keyword topics by visualizing them in word clouds.
+
+Before we construct the word cloud, we'll need to perform a minor cleaning of the `Tweet text` column. When Twitter Analytics exports its data, the raw Tweet strings will include special characters including `amp&` and URLs in the `https://t.co` format that will dominate the visualization if not first removed. 
+
+First, we'll sort our data to find the most popular tweets by impressions and slice the top 20 tweets. Then we'll use a simple function in conjunction with the `Series.apply()` method to clean the `Tweet text` column.
+
+```
+def tweet_cleaner(tweet):
+    tweet = re.sub(r"https://\S+", "", tweet) #eliminates urls
+    tweet = re.sub(r"amp\b", "", tweet) #eliminates ampersand
+    return tweet
+    
+best_impressions = gerard_tweets.sort_values("impressions", ascending=False)[0:20]
+best_impressions = best_impressions["Tweet text"].apply(tweet_cleaner)
+```
+Now with our cleaned `Tweet text` series, it can then be fed into the word cloud.
+``` 
+#bag of words
+comment_words = ' '
+
+stopwords = set(STOPWORDS) 
+
+for val in best_impressions["Tweet text"]: 
+
+    # typecaste each val to string 
+    val = str(val) 
+
+    # split the value 
+    tokens = val.split() 
+
+    # Converts each token into lowercase 
+    for i in range(len(tokens)): 
+        tokens[i] = tokens[i].lower() 
+        
+    #fills bag of words
+    for words in tokens: 
+        comment_words = comment_words + words + ' '
+
+
+wordcloud = WordCloud(width = 800, height = 800, 
+                background_color ='white', 
+                stopwords = stopwords, 
+                min_font_size = 10).generate(comment_words) 
+
+# plot the WordCloud image                        
+plt.figure(figsize = (8, 8), facecolor = None) 
+plt.imshow(wordcloud) 
+plt.axis("off") 
+plt.tight_layout(pad = 0)
+```
 
 
