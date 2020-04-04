@@ -82,7 +82,7 @@ plt.show()
 ![](https://github.com/gtieng/twitter_analytics/blob/master/readme_images/activity_plot.png)
 
 ## Measuring Follower Engagements
-
+In measuring follower engagements, we'll examine performance based on the same windows of month, day and year. This time, we'll change the aggregate method to `DataFrame.groupby().sum()` to measure the totals at each period interval. Plotting each metric is similar to code above. Here's a demonstration of types of engagement by the hour.
 
 ```
 hour_engagement = gerard_tweets.groupby("hour").sum()
