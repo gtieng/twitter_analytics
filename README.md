@@ -1,4 +1,5 @@
 # Performance Reporting with Twitter Analytics data
+**by Gerard Tieng**  
 
 Today, we'll be using Python to chart Twitter performance metrics based on the standard set of data provided by Twitter Analytics. By the end of this project, we will be able to vizualize or list the following pieces of information:
 
@@ -78,5 +79,24 @@ ax[2].set_ylabel("tweet activity")
 
 plt.show()
 ```
-~[](https://github.com/gtieng/twitter_analytics/blob/master/readme_images/activity_plot.png)
+![](https://github.com/gtieng/twitter_analytics/blob/master/readme_images/activity_plot.png)
+
+## Measuring Follower Engagements
+
+
+```
+hour_engagement = gerard_tweets.groupby("hour").sum()
+
+fig, ax = plt.subplots(2,2, figsize=(15,10))
+ax[0,0].bar(hour_engagement.index, hour_engagement["impressions"], tick_label=hour_engagement.index, color="blue")
+ax[0,0].set_title("impressions by hour")
+ax[0,1].bar(hour_engagement.index, hour_engagement["likes"], tick_label=hour_engagement.index, color="red")
+ax[0,1].set_title("likes by hour")
+ax[1,0].bar(hour_engagement.index, hour_engagement["retweets"], tick_label=hour_engagement.index, color="green")
+ax[1,0].set_title("retweets by hour")
+ax[1,1].bar(hour_engagement.index, hour_engagement["replies"], tick_label=hour_engagement.index, color="orange")
+ax[1,1].set_title("replies by hour")
+```
+
+
 
