@@ -154,5 +154,6 @@ plt.imshow(wordcloud)
 plt.axis("off") 
 plt.tight_layout(pad = 0)
 ```
+![](https://github.com/gtieng/twitter_analytics/blob/master/readme_images/wordcloud_plot.png)
 
 
